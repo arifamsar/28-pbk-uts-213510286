@@ -4,29 +4,41 @@ import { Input, Button } from 'flowbite-vue'
 import { XCircleIcon } from "@heroicons/vue/24/outline";
 
 
-let id = 0
+  let id = ref(0)
+  const newTodo = ref('')
+  const hideNotCompleted = ref(true)
+  let todos = ref([])
 
-const newTodo = ref('')
-const hideCompleted = ref(true)
-const todos = ref([
-  { id: id++, text: 'Belajar PBK', done: true },
-  { id: id++, text: 'Belajar PBO', done: false }
-])
+  const readLocalStorage = () => {
+      const data = localStorage.getItem('todos');
+      if (data) {
+        todos.value = JSON.parse(data);
+        id.value = todos.value.length;
+      }
+    };
 
-const filteredTodos = computed(() => {
-  return hideCompleted.value
-    ? todos.value.filter((t) => !t.done)
-    : todos.value
-})
+    const writeLocalStorage = () => {
+      localStorage.setItem('todos', JSON.stringify(todos.value));
+    };
 
-function addTodo() {
-  todos.value.push({ id: id++, text: newTodo.value, done: false })
-  newTodo.value = ''
-}
+  const filteredTodos = computed(() => {
+    return hideNotCompleted.value
+      ? todos.value.filter((t) => !t.done)
+      : todos.value
+  })
 
-function removeTodo(todo) {
-  todos.value = todos.value.filter((t) => t !== todo)
-}
+  function addTodo() {
+    todos.value.push({ id: id++, text: newTodo.value, done: false })
+    newTodo.value = ''
+    writeLocalStorage();
+  }
+
+  function removeTodo(todo) {
+    todos.value = todos.value.filter((t) => t !== todo)
+    writeLocalStorage();
+  }
+
+  readLocalStorage();
 </script>
 
 <template>
@@ -55,7 +67,8 @@ function removeTodo(todo) {
           </li>
         </ul>
       </div>
-      <button class="mx-10 text-white bg-teal-700 hover:bg-teal-800 focus:ring-4 focus:outline-none focus:ring-teal-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center" @click="hideCompleted = !hideCompleted">{{ hideCompleted ? 'Tampilkan Semua' : 'Tampilkan yang belum selesai' }}</button>
+      <button class="mx-10 text-white bg-teal-700 hover:bg-teal-800 focus:ring-4 focus:outline-none focus:ring-teal-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center" 
+      @click="hideNotCompleted = !hideNotCompleted">{{ hideNotCompleted ? 'Tampilkan Semua' : 'Tampilkan yang belum selesai' }}</button>
     </div>
   </div>
 </template>

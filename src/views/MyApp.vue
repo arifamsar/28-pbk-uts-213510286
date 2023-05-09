@@ -9,18 +9,6 @@ import { XCircleIcon } from "@heroicons/vue/24/outline";
   const hideNotCompleted = ref(true)
   let todos = ref([])
 
-  const readLocalStorage = () => {
-      const data = localStorage.getItem('todos');
-      if (data) {
-        todos.value = JSON.parse(data);
-        id.value = todos.value.length;
-      }
-    };
-
-    const writeLocalStorage = () => {
-      localStorage.setItem('todos', JSON.stringify(todos.value));
-    };
-
   const filteredTodos = computed(() => {
     return hideNotCompleted.value
       ? todos.value.filter((t) => !t.done)
@@ -30,29 +18,26 @@ import { XCircleIcon } from "@heroicons/vue/24/outline";
   function addTodo() {
     todos.value.push({ id: id++, text: newTodo.value, done: false })
     newTodo.value = ''
-    writeLocalStorage();
   }
 
   function removeTodo(todo) {
     todos.value = todos.value.filter((t) => t !== todo)
-    writeLocalStorage();
   }
 
-  readLocalStorage();
 </script>
 
 <template>
   <div class="container mx-auto md:px-20">
     <div class="justify-center py-10 bg-teal-100 rounded-xl mt-6 mx-6">
-      <h1 class="uppercase font-bold text-3xl text-center pb-4">List Kegiatan</h1>
+      <h1 class="uppercase font-bold text-3xl text-center pb-4 text-teal-700">List Kegiatan</h1>
       <form @submit.prevent="addTodo">
         <div class="mb-6 px-10">
           <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tambah Kegiatan</label>
           <input v-model="newTodo" type="text" placeholder="Tambahkan kegiatan..."
-            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-teal-500 focus:border-teal-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-teal-500 dark:focus:border-teal-500">
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-teal-500 focus:border-teal-500 block w-full p-2.5">
         </div>
         <button type="submit"
-          class="mx-10 text-white bg-teal-700 hover:bg-teal-800 focus:ring-4 focus:outline-none focus:ring-teal-300 font-medium rounded-lg text-sm  px-5 py-2.5 text-center">Submit</button>
+          class="mx-10 text-white bg-teal-700 hover:bg-teal-800 focus:ring-4 focus:outline-none focus:ring-teal-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Submit</button>
       </form>
       <div class="relative overflow-x-auto sm:rounded-lg mx-10 my-10">
         <ul class="list-none flex-row mx-auto">

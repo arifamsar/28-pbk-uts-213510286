@@ -7,10 +7,10 @@ import { RouterLink, RouterView } from 'vue-router'
   <div id="app">
     <header>
         <nav>
-          <div class="text-slate-500">
-            <RouterLink class="hover:text-slate-300" to="/">Home</RouterLink> |
-            <RouterLink class="hover:text-slate-300" to="/myapp">MyApp</RouterLink> |
-            <RouterLink class="hover:text-slate-300" to="/about">About</RouterLink> 
+          <div class="text-teal-500">
+            <RouterLink class="hover:text-teal-300" to="/">Home</RouterLink> |
+            <RouterLink class="hover:text-teal-300" to="/myapp">MyApp</RouterLink> |
+            <RouterLink class="hover:text-teal-300" to="/about">About</RouterLink> 
           </div>
         </nav>
     </header>
@@ -38,7 +38,7 @@ nav a {
 
 nav a.router-link-exact-active {
   color: #ffff;
-  background: #0d9488;
+  background: #0f766e;
   border-radius: 10px;
 }
 </style>

@@ -30,7 +30,7 @@ function removeTodo(todo) {
 </script>
 
 <template>
-  <div class="container mx-auto px-20">
+  <div class="container mx-auto md:px-20">
     <div class="justify-center py-10 bg-teal-100 rounded-xl mt-6 mx-6">
       <h1 class="uppercase font-bold text-3xl text-center pb-4">List Kegiatan</h1>
       <form @submit.prevent="addTodo">

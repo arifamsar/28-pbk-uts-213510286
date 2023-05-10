@@ -29,11 +29,14 @@ const filteredTodos = computed(() => {
 function addTodo() {
   todos.value.push({ id: id++, text: newTodo.value, done: false })
   newTodo.value = ''
+  localStorage.setItem('todos', JSON.stringify(todos.value))
 }
 
 function removeTodo(todo) {
   todos.value = todos.value.filter((t) => t !== todo)
+  localStorage.setItem('todos', JSON.stringify(todos.value))
 }
+
 </script>
 
 <template>
@@ -51,7 +54,7 @@ function removeTodo(todo) {
       </form>
       <div class="relative overflow-x-auto sm:rounded-lg mx-10 my-10">
         <ul class="list-none flex-row mx-auto">
-          <li v-for="todo in filteredTodos" :key="todo.id" class="p-2 font-medium text-gray-900">
+          <li v-for="todo in filteredTodos" :key="todo.id" class="p-2 sm:text-sm text-base font-medium text-gray-900">
             <div class="flex items-center justify-center bg-teal-200 rounded py-2">
               <span :class="{ done: todo.done }">{{ todo.text }}</span>
               <input

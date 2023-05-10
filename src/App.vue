@@ -16,9 +16,9 @@ const redirectToHome = () => {
       <div>
         <nav>
           <div class="text-teal-500">
-            <RouterLink class="hover:text-teal-300" to="/">Home</RouterLink> |
-            <RouterLink class="hover:text-teal-300" to="/myapp">MyApp</RouterLink> |
-            <RouterLink class="hover:text-teal-300" to="/about">About</RouterLink>
+            <RouterLink class="hover:text-teal-300 p-2.5 font-semibold border rounded-lg focus:ring-3 border-none focus:outline-none focus:ring-teal-300" to="/">Home</RouterLink> |
+            <RouterLink class="hover:text-teal-300 p-2.5 font-semibold border rounded-lg focus:ring-3 border-none focus:outline-none focus:ring-teal-300" to="/myapp">MyApp</RouterLink> |
+            <RouterLink class="hover:text-teal-300 p-2.5 font-semibold border rounded-lg focus:ring-3 border-none focus:outline-none focus:ring-teal-300" to="/about">About</RouterLink>
           </div>
         </nav>
 
@@ -58,16 +58,9 @@ nav {
   text-align: center;
 }
 
-nav a {
-  font-weight: bold;
-  text-decoration: none;
-  padding: 10px;
-}
-
 nav a.router-link-exact-active {
-  color: #ffff;
-  background: #0f766e;
-  border-radius: 10px;
+  @apply text-white;
+  @apply bg-teal-600;
 }
 </style>
 

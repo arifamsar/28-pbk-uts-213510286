@@ -46,7 +46,7 @@ function removeTodo(todo) {
       <form @submit.prevent="addTodo">
         <div class="mb-6 px-10">
           <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tambah Kegiatan</label>
-          <input v-model="newTodo" type="text" placeholder="Tambahkan kegiatan..."
+          <input v-model="newTodo" type="text" placeholder="Tambahkan kegiatan..." required
             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-teal-500 focus:border-teal-500 block w-full p-2.5">
         </div>
         <button type="submit"

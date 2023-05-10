@@ -54,8 +54,8 @@ function removeTodo(todo) {
       </form>
       <div class="relative overflow-x-auto sm:rounded-lg mx-10 my-10">
         <ul class="list-none flex-row mx-auto">
-          <li v-for="todo in filteredTodos" :key="todo.id" class="p-2 sm:text-sm text-base font-medium text-gray-900">
-            <div class="flex items-center justify-center bg-teal-200 rounded py-2">
+          <li v-for="todo in filteredTodos" :key="todo.id" class="py-2 md:text-md text-sm font-medium text-gray-900">
+            <div class="flex items-center justify-center bg-teal-200 rounded py-2.5 md:py-2">
               <span :class="{ done: todo.done }">{{ todo.text }}</span>
               <input
                 class="ml-2 w-4 h-4 text-teal-600 bg-gray-100 border-gray-300 rounded focus:ring-teal-500 focus:ring-2 "

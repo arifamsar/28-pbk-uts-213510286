@@ -58,7 +58,7 @@ function removeTodo(todo) {
             <div class="flex items-center justify-center bg-teal-200 rounded py-2.5 md:py-2">
               <span :class="{ done: todo.done }">{{ todo.text }}</span>
               <input
-                class="ml-2 w-4 h-4 text-teal-600 bg-gray-100 border-gray-300 rounded focus:ring-teal-500 focus:ring-2 "
+                class="ml-2 w-5 h-5 text-teal-600 bg-teal-100 border-teal-300 rounded-full focus:ring-teal-500 focus:ring-2"
                 type="checkbox" v-model="todo.done">
               <button class="ml-2" @click="removeTodo(todo)">
                 <XCircleIcon class="h-6 w-6 text-red-400 hover:text-red-700" />

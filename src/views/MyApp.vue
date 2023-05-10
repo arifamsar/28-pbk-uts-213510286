@@ -1,29 +1,39 @@
 <script setup>
-import { ref, computed } from 'vue'
-import { Input, Button } from 'flowbite-vue'
-import { XCircleIcon } from "@heroicons/vue/24/outline";
+import { ref, computed, watchEffect } from 'vue'
+import { XCircleIcon } from '@heroicons/vue/24/outline'
 
+let id = 0;
 
-  let id = ref(0)
-  const newTodo = ref('')
-  const hideNotCompleted = ref(true)
-  let todos = ref([])
+const newTodo = ref('')
+const hideNotCompleted = ref(true)
 
-  const filteredTodos = computed(() => {
-    return hideNotCompleted.value
-      ? todos.value.filter((t) => !t.done)
-      : todos.value
-  })
+// Ambil data todos dari local storage jika sudah tersedia
+const storedTodos = JSON.parse(localStorage.getItem('todos'))
+const todos = ref(storedTodos || [
+  { id: id++, text: 'Belajar Javascript', done: true },
+  { id: id++, text: 'Mengerjakan Tugas', done: true },
+  { id: id++, text: 'Belajar Vue', done: false }
+])
 
-  function addTodo() {
-    todos.value.push({ id: id++, text: newTodo.value, done: false })
-    newTodo.value = ''
-  }
+// Gunakan watcher untuk menyimpan data todos pada local storage setiap kali ada perubahan
+watchEffect(() => {
+  localStorage.setItem('todos', JSON.stringify(todos.value))
+})
 
-  function removeTodo(todo) {
-    todos.value = todos.value.filter((t) => t !== todo)
-  }
+const filteredTodos = computed(() => {
+  return hideNotCompleted.value
+    ? todos.value.filter((t) => !t.done)
+    : todos.value
+})
 
+function addTodo() {
+  todos.value.push({ id: id++, text: newTodo.value, done: false })
+  newTodo.value = ''
+}
+
+function removeTodo(todo) {
+  todos.value = todos.value.filter((t) => t !== todo)
+}
 </script>
 
 <template>
@@ -43,8 +53,10 @@ import { XCircleIcon } from "@heroicons/vue/24/outline";
         <ul class="list-none flex-row mx-auto">
           <li v-for="todo in filteredTodos" :key="todo.id" class="p-2 font-medium text-gray-900">
             <div class="flex items-center justify-center bg-teal-200 rounded py-2">
-              <span :class="{ done: todo.done}">{{ todo.text }}</span>
-              <input class="ml-2 w-4 h-4 text-teal-600 bg-gray-100 border-gray-300 rounded focus:ring-teal-500 focus:ring-2 " type="checkbox" v-model="todo.done">
+              <span :class="{ done: todo.done }">{{ todo.text }}</span>
+              <input
+                class="ml-2 w-4 h-4 text-teal-600 bg-gray-100 border-gray-300 rounded focus:ring-teal-500 focus:ring-2 "
+                type="checkbox" v-model="todo.done">
               <button class="ml-2" @click="removeTodo(todo)">
                 <XCircleIcon class="h-6 w-6 text-red-400 hover:text-red-700" />
               </button>
@@ -52,8 +64,9 @@ import { XCircleIcon } from "@heroicons/vue/24/outline";
           </li>
         </ul>
       </div>
-      <button class="mx-10 text-white bg-teal-700 hover:bg-teal-800 focus:ring-4 focus:outline-none focus:ring-teal-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center" 
-      @click="hideNotCompleted = !hideNotCompleted">{{ hideNotCompleted ? 'Tampilkan Semua' : 'Tampilkan yang belum selesai' }}</button>
+      <button
+        class="mx-10 text-white bg-teal-700 hover:bg-teal-800 focus:ring-4 focus:outline-none focus:ring-teal-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+        @click="hideNotCompleted = !hideNotCompleted">{{ hideNotCompleted ? 'Tampilkan Semua' : 'Tampilkan yang belum selesai' }}</button>
     </div>
   </div>
 </template>
@@ -62,5 +75,4 @@ import { XCircleIcon } from "@heroicons/vue/24/outline";
 .done {
   text-decoration: line-through;
 }
-
 </style>

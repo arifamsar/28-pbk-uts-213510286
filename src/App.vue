@@ -23,7 +23,7 @@ const redirectToHome = () => {
         </nav>
       </div>
     </header>
-    <RouterView class="pt-32"></RouterView> />
+    <RouterView class="pt-32"></RouterView>
     <div class="py-10 sm:mx-auto text-center">
       <div class="inline-flex rounded-md shadow-sm">
         <button @click="$router.push({ path: '/' })"

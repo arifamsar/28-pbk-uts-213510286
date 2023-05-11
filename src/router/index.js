@@ -30,10 +30,8 @@ const routes = [
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes,
-  scrollBehavior (to, from, savedPostition) {
-    return savedPosition || new Promise((resolve)=>{
-      setTimeout(()=> resolve({ top: 0, behavior: 'smooth' }), 300)
-    })
+  scrollBehavior() {
+    return { top: 0, left: 0 }
   }
 }) 
 

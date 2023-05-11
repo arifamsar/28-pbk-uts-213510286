@@ -49,8 +49,10 @@ function removeTodo(todo) {
           <input v-model="newTodo" type="text" placeholder="Tambahkan kegiatan..." required
             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-teal-500 focus:border-teal-500 block w-full p-2.5">
         </div>
-        <button type="submit"
-          class="mx-10 text-white bg-teal-700 hover:bg-teal-800 focus:ring-4 focus:outline-none focus:ring-teal-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Submit</button>
+        <div class="text-center md:text-left">
+          <button type="submit"
+            class="mx-10 text-white bg-teal-700 hover:bg-teal-800 focus:ring-4 focus:outline-none focus:ring-teal-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Submit</button>
+        </div>
       </form>
       <div class="relative overflow-x-auto sm:rounded-lg mx-10 my-10">
         <ul class="list-none flex-row mx-auto">
@@ -67,9 +69,11 @@ function removeTodo(todo) {
           </li>
         </ul>
       </div>
-      <button
-        class="mx-10 text-white bg-teal-700 hover:bg-teal-800 focus:ring-4 focus:outline-none focus:ring-teal-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
-        @click="hideNotCompleted = !hideNotCompleted">{{ hideNotCompleted ? 'Tampilkan Semua' : 'Tampilkan yang belum selesai' }}</button>
+      <div class="text-center md:text-left">
+        <button
+          class="mx-10 text-white bg-teal-700 hover:bg-teal-800 focus:ring-4 focus:outline-none focus:ring-teal-300 font-medium rounded-lg text-sm px-5 py-2.5"
+          @click="hideNotCompleted = !hideNotCompleted">{{ hideNotCompleted ? 'Tampilkan Semua' : 'Tampilkan yang belum selesai' }}</button>
+      </div>
     </div>
   </div>
 </template>

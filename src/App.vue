@@ -13,7 +13,7 @@ const redirectToHome = () => {
 <template>
   <div id="app">
     <header class="bg-transparent fixed top-0 left-0 w-full flex items-center z-10">
-      <div class="container">
+      <div class="container mx-auto">
         <nav class="flex items-center justify-center p-7">
           <div class="text-teal-500">
             <RouterLink class="hover:text-teal-300 p-2.5 font-semibold border rounded-lg focus:ring-3 border-none focus:ring-teal-700" to="/">Home</RouterLink> |

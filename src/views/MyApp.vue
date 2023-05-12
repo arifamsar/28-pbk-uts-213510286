@@ -70,7 +70,7 @@ function removeTodo(todo) {
         </ul>
       </div>
       <div class="text-center md:text-left">
-        <button
+        <button v-if="todos.length > 0"
           class="mx-10 text-white bg-teal-700 hover:bg-teal-800 focus:ring-4 focus:outline-none focus:ring-teal-300 font-medium rounded-lg text-sm px-5 py-2.5"
           @click="hideNotCompleted = !hideNotCompleted">{{ hideNotCompleted ? 'Tampilkan Semua' : 'Tampilkan yang belum selesai' }}</button>
       </div>

@@ -3,6 +3,7 @@ import HomeView from '../views/HomeView.vue'
 import NotFound from '../views/NotFound.vue'
 import AboutView from '../views/AboutView.vue'
 import MyApp from '../views/MyApp.vue'
+import Store from '../views/Store.vue'
 
 const routes = [
   {
@@ -19,6 +20,11 @@ const routes = [
     path: '/myapp',
     name: 'myapp',
     component: MyApp
+  },
+  {
+    path: '/store',
+    name: 'store',
+    component: Store
   },
   {
     path: '/:catchAll(.*)',

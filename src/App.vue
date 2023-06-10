@@ -18,7 +18,8 @@ const redirectToHome = () => {
           <div class="text-teal-500">
             <RouterLink class="hover:text-teal-300 text-sm p-2.5 font-semibold border rounded-lg focus:ring-3 border-none focus:ring-teal-700" to="/">Home</RouterLink> |
             <RouterLink class="hover:text-teal-300 text-sm p-2.5 font-semibold border rounded-lg focus:ring-3 border-none focus:ring-teal-700" to="/myapp">MyApp</RouterLink> |
-            <RouterLink class="hover:text-teal-300 text-sm p-2.5 font-semibold border rounded-lg focus:ring-3 border-none focus:ring-teal-700" to="/about">About</RouterLink>
+            <RouterLink class="hover:text-teal-300 text-sm p-2.5 font-semibold border rounded-lg focus:ring-3 border-none focus:ring-teal-700" to="/about">About</RouterLink> |
+            <RouterLink class="hover:text-teal-300 text-sm p-2.5 font-semibold border rounded-lg focus:ring-3 border-none focus:ring-teal-700" to="/store">Store</RouterLink>
           </div>
         </nav>
       </div>

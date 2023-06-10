@@ -34,12 +34,12 @@ export const useTaskStore = defineStore('taskStore', {
                 task.id !== id)
         },
         toggleFav(id) {
-            this.tasks = this.tasks.map(task => 
-                task.id === id ? {...task, isFav: !task.isFav} : task)
+            const task = this.tasks.find(task => task.id === id)
+            task.isFav = !task.isFav
         },
         completedTask(id) {
-            this.tasks = this.tasks.map(task => 
-                task.id === id ? {...task, completed: !task.completed} : task)
+            const task = this.tasks.find(task => task.id === id)
+            task.completed = !task.completed
         }
     }
 })

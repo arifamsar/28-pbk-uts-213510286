@@ -1,6 +1,6 @@
 <template>
     <form class="mx-auto text-center pt-10 " @submit.prevent="handleSubmit">
-        <input class="border-slate-200 rounded-xl p-2.5 text-sm mr-5 focus:ring-2 focus:ring-teal-500 focus:outline-none"
+        <input class="border-slate-200 rounded-xl p-2.5 text-sm mr-5 focus:ring-2 focus:ring-teal-500 focus:outline-none w-1/2"
         type="text"
         placeholder="Add a new task"
         v-model="newTask"
